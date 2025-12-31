@@ -463,8 +463,8 @@ const Ingresar = () => {
                     </div>
 
                     <div className="footer-links">
-                        <p>¿Olvidaste tu <a href="#">usuario / contraseña?</a></p>
-                        <p>Regístrate como <a href="#">nuevo usuario</a></p>
+                        <p>¿Olvidaste tu <a href="/">usuario / contraseña?</a></p>
+                        <p>Regístrate como <a href="/">nuevo usuario</a></p>
                     </div>
                 </div>
             </div>

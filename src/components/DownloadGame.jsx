@@ -216,36 +216,6 @@ const BackIcon = () => (
   </svg>
 );
 
-const getAreaName = (areaId) => {
-  const areas = {
-    science: 'Ciencia',
-    technology: 'Tecnología',
-    engineering: 'Ingeniería',
-    arts: 'Arte',
-    math: 'Matemáticas'
-  };
-  return areas[areaId] || areaId;
-};
-
-const getAreaIcon = (areaId) => {
-  const icons = {
-    science: 'https://placehold.co/64x64/3498db/ffffff?text=C',
-    technology: 'https://placehold.co/64x64/2ecc71/ffffff?text=T',
-    engineering: 'https://placehold.co/64x64/e67e22/ffffff?text=I',
-    arts: 'https://placehold.co/64x64/9b59b6/ffffff?text=A',
-    math: 'https://placehold.co/64x64/f1c40f/ffffff?text=M'
-  };
-  return icons[areaId] || 'https://placehold.co/64x64/cccccc/ffffff?text=?';
-};
-
-const formatDate = (dateString) => {
-  if (!dateString) return 'No especificada';
-  const date = new Date(dateString);
-  date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  return date.toLocaleDateString('es-ES', options);
-};
-
 const ANDROID_TEMPLATES = {
   CalculoMental: {
     baseZipUrl: `/templates/CalculoMental/android-base.zip`,
