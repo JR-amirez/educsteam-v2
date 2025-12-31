@@ -4,7 +4,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 
 // Asumiendo que importas los iconos de react-icons
 import { GiVrHeadset, GiPlatform } from 'react-icons/gi';
-import { FaHome, FaReact, FaConnectdevelop, FaDownload } from 'react-icons/fa';
+import { FaHome, FaReact, FaDownload } from 'react-icons/fa';
 import { IoCreateOutline } from 'react-icons/io5';
 import { LuSquareActivity } from 'react-icons/lu';
 import { SiUbisoft } from 'react-icons/si';

@@ -6,9 +6,6 @@ import { GrLinkNext } from "react-icons/gr";
 import { Player } from '@lottiefiles/react-lottie-player';
 import { Tooltip } from 'react-tooltip';
 
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-
 import '../styles/theme.css';
 import '../styles/screens.css';
 
@@ -57,11 +54,11 @@ const Ra = () => {
            
               <h3 className="area-name">{biblioteca.name}</h3>
               <p className="area-description">{biblioteca.description}</p>
-                   <a
+                   <span
   data-tooltip-id="my-tooltip"
   data-tooltip-content="Hello world!"
   data-tooltip-place="top"
-></a>
+></span>
 <Tooltip id="my-tooltip" />
             </div>
           ))}

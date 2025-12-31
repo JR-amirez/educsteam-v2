@@ -5,9 +5,6 @@ import { IoArrowBackSharp } from "react-icons/io5";
 import { GrLinkNext } from "react-icons/gr";
 import { Player } from '@lottiefiles/react-lottie-player';
 
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-
 import '../styles/theme.css';
 import '../styles/screens.css';
 

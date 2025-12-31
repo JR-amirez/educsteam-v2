@@ -4,12 +4,12 @@ import { saveAs } from 'file-saver';
 import {
     HelpCircle, RotateCcw, Timer, Trophy, Star, CheckCircle,
     Sun, Wind, Sprout, Leaf, Copy, Activity,
-    Calculator, PieChart, Hash, Divide,
-    Brain, Heart, Eye, Ear, Bone, Stethoscope,
+    Calculator, PieChart, Hash,
+    Brain, Heart, Eye, Ear, Bone,
     Square, Circle, Triangle, Hexagon, Octagon, BoxSelect,
-    Syringe, Shield, Thermometer, Pill, AlertTriangle, Cross,
+    Syringe, Shield, Thermometer, Pill, AlertTriangle,
     Box, Cylinder, Cone, Globe, Pyramid,
-    LogOut, ArrowLeft, Package, X, Tag, FileText, Calendar, Monitor, Shapes, Grid, Clock, List, Layers, Puzzle, Home, Type, Info, Smartphone
+    ArrowLeft, Tag, FileText, Calendar, Monitor, Shapes, Clock, List, Layers, Puzzle, Type, Smartphone
 } from 'lucide-react';
 
 // --- ESTILOS GLOBALES DEL JUEGO (ACERTIJO) ---

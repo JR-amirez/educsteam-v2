@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'; // Importamos useState y useEffect
-import Swal from 'sweetalert2'; // Asegúrate de tener instalado sweetalert2 o quita esta línea si usas CDN
 import { useLocation, useNavigate } from 'react-router-dom';
 // Importamos los iconos de lucide-react
 import { 
@@ -10,12 +9,6 @@ import {
   Monitor, 
   Shapes, 
   Puzzle,
-  ArrowLeft,
-  Download,
-  Home,
-  Package, // Icono para el modal
-  X, // Icono para cerrar el modal
-  CheckCircle // Icono para descarga completa
 } from 'lucide-react';
 
 // Comentamos las importaciones de CSS que no podemos resolver
@@ -370,7 +363,6 @@ const Summary = ({ config, onBack }) => {
       // Los hooks ahora se llaman incondicionalmente en el nivel superior,
       // corrigiendo los errores de linting.
       const location = useLocation();
-      const navigate = useNavigate();
       // Obtenemos 'state' de 'location'. Puede ser 'null' si no se pasó nada
       // o si estamos en un entorno de preview que no provee un 'location.state'.
       const state = location.state;
@@ -396,8 +388,7 @@ const Summary = ({ config, onBack }) => {
   const { 
     selectedAreas = MOCK_DATA.selectedAreas, 
     selectedSkills = MOCK_DATA.selectedSkills, 
-    gameDetails = MOCK_DATA.gameDetails, 
-    selectedGame, // Este puede seguir siendo undefined si no se usa
+    gameDetails = MOCK_DATA.gameDetails,
     selectedPlatforms = MOCK_DATA.selectedPlatforms
   } = state || MOCK_DATA;
 

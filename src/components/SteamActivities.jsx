@@ -2,7 +2,7 @@ import { useState, useEffect, useLayoutEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { steamAreas, steamGames } from '../data/steamData';
-import { IoArrowBackSharp, IoSettingsSharp, IoCloseSharp } from "react-icons/io5";
+import { IoArrowBackSharp, IoCloseSharp } from "react-icons/io5";
 import { GrLinkNext } from "react-icons/gr";
 import { Player } from '@lottiefiles/react-lottie-player';
 
@@ -15,11 +15,8 @@ const SteamActivities = () => {
   const navigate = useNavigate();
   const [filteredGames, setFilteredGames] = useState([]);
   const [selectedGame, setSelectedGame] = useState(null);
-  const [show, setShow] = useState(false);
   const [showRAModal, setShowRAModal] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const handleCloseRAModal = () => setShowRAModal(false);
 
   // Lista de juegos que soportan tecnología RA
@@ -144,17 +141,6 @@ const SteamActivities = () => {
         selectedGame: selectedGame
       }
     });
-  };
-
-  const handleIntegrateRA = () => {
-    if (selectedGame) {
-        navigate('/TecnologiaRa', {
-            state: {
-              ...state,
-              selectedGame: selectedGame 
-            }
-        });
-    }
   };
 
   return (
