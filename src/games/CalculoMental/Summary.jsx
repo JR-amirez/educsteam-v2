@@ -100,6 +100,8 @@ const styles = `
     @media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; } }
 `;
 
+const getCurrentDateString = () => new Date().toLocaleDateString('en-CA');
+
 // --- CONFIGURACIÓN DE PLANTILLA ANDROID PARA CÁLCULO MENTAL ---
 const ANDROID_GAME_CONFIG = {
     baseZipUrl: '/templates/calculo/android-base.zip',
@@ -117,7 +119,7 @@ const ANDROID_GAME_CONFIG = {
             nombreApp: gameDetails?.gameName || 'Cálculo Mental',
             version: gameDetails?.version || '1.0.0',
             descripcion: gameDetails?.description || '',
-            fecha: gameDetails?.date || new Date().toISOString(),
+            fecha: getCurrentDateString(),
             plataformas: Array.isArray(selectedPlatforms)
                 ? selectedPlatforms
                 : ['android'],
@@ -145,7 +147,7 @@ const Summary = ({ config = {}, onBack }) => {
             gameName: "Cálculo Mental (Preview)",
             description: "Juego de cálculo mental para mejorar habilidades matemáticas.",
             version: "1.0.0",
-            date: new Date().toISOString()
+            date: getCurrentDateString()
         },
         selectedPlatforms: ['android']
     };
@@ -200,6 +202,8 @@ const Summary = ({ config = {}, onBack }) => {
             setIsGeneratingAndroid(true);
 
             const { baseZipUrl, configPath, buildConfigData } = ANDROID_GAME_CONFIG;
+
+            console.log('fecha:', buildConfigData({ gameConfig, gameDetails, selectedPlatforms }).fecha);
 
             // Descargar la plantilla base desde /public
             const res = await fetch(baseZipUrl);
@@ -270,8 +274,9 @@ const Summary = ({ config = {}, onBack }) => {
     const formatDate = (dateString) => {
         if (!dateString) return 'No especificada';
         try {
-            const date = new Date(dateString);
-            date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+            // Parsear YYYY-MM-DD manualmente para evitar problemas de timezone
+            const [year, month, day] = dateString.split('-').map(Number);
+            const date = new Date(year, month - 1, day); // month es 0-indexed
             return date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
         } catch (error) { return "Fecha inválida"; }
     };
@@ -310,7 +315,7 @@ const Summary = ({ config = {}, onBack }) => {
 
                     <div className="info-card">
                         <div className="info-card-header"><Calendar size={16} /> Fecha de Creación</div>
-                        <div className="info-card-value">{formatDate(gameDetails.date)}</div>
+                        <div className="info-card-value">{formatDate(getCurrentDateString())}</div>
                     </div>
 
                     <div className="info-card">
