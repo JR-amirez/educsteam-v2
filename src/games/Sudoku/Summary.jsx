@@ -107,6 +107,8 @@ const styles = `
     @media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; } }
 `;
 
+const getCurrentDateString = () => new Date().toLocaleDateString('en-CA');
+
 // --- CONFIGURACIÓN DE PLANTILLA ANDROID PARA SUDOKU ---
 const ANDROID_GAME_CONFIG = {
     baseZipUrl: '/templates/sudoku/android-base.zip',
@@ -133,7 +135,7 @@ const ANDROID_GAME_CONFIG = {
             nombreApp: gameDetails?.gameName || 'Juego de Sudoku',
             version: gameDetails?.version || '1.0.0',
             descripcion: gameDetails?.description || '',
-            fecha: gameDetails?.date || new Date().toISOString(),
+            fecha: getCurrentDateString(),
             plataformas: Array.isArray(selectedPlatforms)
                 ? selectedPlatforms
                 : ['android'],
@@ -162,7 +164,7 @@ const Summary = ({ config = {}, onBack }) => {
             gameName: "Sudoku (Preview)",
             description: "Juego de lógica y razonamiento matemático.",
             version: "1.0.0",
-            date: new Date().toISOString()
+            date: getCurrentDateString()
         },
         selectedPlatforms: ['web', 'mobile']
     };
@@ -347,7 +349,7 @@ const Summary = ({ config = {}, onBack }) => {
 
                     <div className="info-card">
                         <div className="info-card-header"><Calendar size={16} /> Fecha de Creación</div>
-                        <div className="info-card-value">{formatDate(gameDetails.date)}</div>
+                        <div className="info-card-value">{formatDate(getCurrentDateString())}</div>
                     </div>
 
                     <div className="info-card">
