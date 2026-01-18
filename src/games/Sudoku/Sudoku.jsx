@@ -379,10 +379,17 @@ const SudokuGame = () => {
   const [showModal, setShowModal] = useState(null);
 
   const availableLevels = [
-    { size: 3, name: 'Básico: 3x3' },
+    { size: 3, name: 'Básico: 4x4' },
     { size: 6, name: 'Intermedio: 6x6' },
     { size: 9, name: 'Avanzado: 9x9' },
   ];
+
+  // Resetear contentType si cambia a nivel avanzado y tiene fracciones seleccionadas
+  useEffect(() => {
+    if (level.size === 9 && contentType === 'fractions') {
+      setContentType('numbers');
+    }
+  }, [level.size, contentType]);
 
   useEffect(() => {
     let timer;
@@ -523,7 +530,7 @@ const SudokuGame = () => {
                   <select id="content-type-select" value={contentType} onChange={(e) => setContentType(e.target.value)}>
                     <option value="numbers">Números del 1 al 9</option>
                     <option value="letters">Letras de A a Z</option>
-                    <option value="fractions">Fracciones equivalentes</option>
+                    {level.size !== 9 && <option value="fractions">Fracciones equivalentes</option>}
                   </select>
                 </div>
                 <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}>
