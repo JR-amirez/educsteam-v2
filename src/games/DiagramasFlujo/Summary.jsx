@@ -613,11 +613,13 @@ const Summary = ({ config, onBack }) => {
             // Construir el JSON de configuración
             const configData = {
                 nivel: nivelMap[config.difficulty] || 'basico',
-                diagramas: Array.isArray(config.selectedDiagrams)
-                    ? config.selectedDiagrams.map((d) => ({
-                        id: d.id,
-                        nombre: d.nombre,
-                        pasos: d.pasos || []
+                diagramas: Array.isArray(config.problems)
+                    ? config.problems.map((p) => ({
+                        id: p.id,
+                        titulo: p.titulo,
+                        opciones: p.opciones || [],
+                        solucion: p.solucion || [],
+                        plantilla: p.plantilla || []
                     }))
                     : [],
                 nombreApp: gameDetails?.gameName || 'Diagramas de Flujo',
