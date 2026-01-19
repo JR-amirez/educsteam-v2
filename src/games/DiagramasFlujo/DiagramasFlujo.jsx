@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
-    ArrowLeft, CheckCircle, Download, Layers, Tag, FileText,
-    Calendar, Monitor, Shapes, Puzzle, Type, Clock, List,
-    Play, Info
+    ArrowLeft, CheckCircle
 } from 'lucide-react';
 import Summary from './Summary';
 
@@ -147,14 +145,98 @@ const TODOS_LOS_PROBLEMAS = [
     solucion: ['Girar la llave de encendido', 'El combustible se quema en el motor', 'La energía química se transforma en energía mecánica', 'Las llantas comienzan a moverse'],
     plantilla: [0, 0, 0, 0]
   },
-  // ... (Resto de problemas se mantienen igual, abreviados para no exceder limite, pero deben estar todos en la version final)
-  { id: 'b4', titulo: 'Generar energía con un molino', nivel: 'Básico', opciones: ['Viento mueve aspas', 'Generador convierte movimiento', 'Energía por cables', 'Encender foco'], solucion: ['Viento mueve aspas', 'Generador convierte movimiento', 'Energía por cables', 'Encender foco'], plantilla: [0, 0, 0, 0] },
-  { id: 'b5', titulo: 'Encender un foco', nivel: 'Básico', opciones: ['Conectar pila', 'Cerrar interruptor', 'Corriente fluye', 'Foco enciende'], solucion: ['Conectar pila', 'Cerrar interruptor', 'Corriente fluye', 'Foco enciende'], plantilla: [0, 0, 0, 0] },
-  { id: 'i1', titulo: 'Semáforo inteligente', nivel: 'Intermedio', opciones: ['Sistema control', 'Luz verde', 'Luz amarilla', 'Luz roja'], solucion: ['Sistema control', 'Luz verde', 'Luz amarilla', 'Luz roja'], plantilla: [0, 0, 0, 0] },
-  { id: 'i2', titulo: 'Regadera automática', nivel: 'Intermedio', opciones: ['Sensor detecta', 'Abre válvula', 'Agua fluye', 'Cierra válvula'], solucion: ['Sensor detecta', 'Abre válvula', 'Agua fluye', 'Cierra válvula'], plantilla: [0, 0, 0, 0] },
-  { id: 'i3', titulo: 'Termostato', nivel: 'Intermedio', opciones: ['Leer temperatura', 'Comparar deseada', 'Encender calefacción', 'Apagar calefacción'], solucion: ['Leer temperatura', 'Comparar deseada', 'Encender calefacción', 'Apagar calefacción'], plantilla: [1, 0, 0, 0] },
-  { id: 'a1', titulo: 'Lavadora', nivel: 'Avanzado', opciones: ['Llenar tanque', 'Lavado', 'Enjuague', 'Centrifugado'], solucion: ['Llenar tanque', 'Lavado', 'Enjuague', 'Centrifugado'], plantilla: [0, 0, 0, 0] },
-  { id: 'a7', titulo: 'Aire acondicionado', nivel: 'Avanzado', opciones: ['Leer ambiente', 'Comparar config', 'Enfriar/Calentar', 'Mantener'], solucion: ['Leer ambiente', 'Comparar config', 'Enfriar/Calentar', 'Mantener'], plantilla: [1, 0, 0, 0] },
+  { 
+    id: 'b4', titulo: 'Generar energía con un molino de viento', nivel: 'Básico', 
+    opciones: ['El viento mueve las aspas del molino', 'El generador convierte el movimiento en energía eléctrica', ' La energía se envía por cables', 'Se usa para encender un foco'],
+    solucion: ['El viento mueve las aspas del molino', 'El generador convierte el movimiento en energía eléctrica', ' La energía se envía por cables', 'Se usa para encender un foco'],
+    plantilla: [0, 0, 0, 0]
+  },
+  { 
+    id: 'b5', titulo: 'Encender un foco con un circuito sencillo', nivel: 'Básico',
+    opciones: ['Conectar la pila al foco con los cables', 'Asegurar que el interruptor esté cerrado', 'La corriente fluye hacia el foco', 'El foco se enciende'],
+    solucion: ['Conectar la pila al foco con los cables', 'Asegurar que el interruptor esté cerrado', 'La corriente fluye hacia el foco', 'El foco se enciende'],
+    plantilla: [1, 0, 0, 0]
+  },
+
+  { 
+    id: 'i1', titulo: 'El semáforo inteligente', nivel: 'Intermedio', 
+    opciones: ['Encender sistema de control', 'Luz verde encendida (autos avanzan)', 'Cambiar a luz amarilla (precaución)', 'Cambiar a luz roja (autos se detienen)'], 
+    solucion: ['Encender sistema de control', 'Luz verde encendida (autos avanzan)', 'Cambiar a luz amarilla (precaución)', 'Cambiar a luz roja (autos se detienen)'], 
+    plantilla: [0, 0, 0, 0] 
+  },
+  { 
+    id: 'i2', titulo: 'Encender una regadera automática', nivel: 'Intermedio', 
+    opciones: ['Sensor detecta movimiento de las personas', 'Sistema abre la válvula de agua', 'El agua fluye por la regadera', 'Al salir la persona, el sistema cierra la válvula'], 
+    solucion: ['Sensor detecta movimiento de las personas', 'Sistema abre la válvula de agua', 'El agua fluye por la regadera', 'Al salir la persona, el sistema cierra la válvula'], 
+    plantilla: [0, 0, 0, 0]
+  },
+  { 
+    id: 'i3', titulo: 'Regular la temperatura con un termostato', nivel: 'Intermedio', 
+    opciones: ['Leer temperatura actual', 'Comparar con temperatura deseada', 'Si hace frío, encender calefacción', 'Si hace calor, apagar calefacción'], 
+    solucion: ['Leer temperatura actual', 'Comparar con temperatura deseada', 'Si hace frío, encender calefacción', 'Si hace calor, apagar calefacción'], 
+    plantilla: [0, 0, 0, 0] 
+  },
+  { 
+    id: 'i4', titulo: 'Mostrar el funcionamiento de iluminación automático en una casa', nivel: 'Intermedio', 
+    opciones: ['Sensor de movimiento detecta presencia', 'Enviar señal al sistema de luces', 'Luces se encienden automáticamente', 'Si no hay movimiento, las luces se apagan'], 
+    solucion: ['Sensor de movimiento detecta presencia', 'Enviar señal al sistema de luces', 'Luces se encienden automáticamente', 'Si no hay movimiento, las luces se apagan'], 
+    plantilla: [0, 0, 0, 0] 
+  },
+  { 
+    id: 'i5', titulo: 'Sistema contra incendios', nivel: 'Intermedio', 
+    opciones: ['Sensor detecta humo o aumento de temperatura', 'Activar alarma de emergencia', 'Abrir válvulas de aspersores', 'Apagar el fuego y cerrar válvulas'], 
+    solucion: ['Sensor detecta humo o aumento de temperatura', 'Activar alarma de emergencia', 'Abrir válvulas de aspersores', 'Apagar el fuego y cerrar válvulas'], 
+    plantilla: [0, 0, 0, 0] 
+  },
+  { 
+    id: 'i6', titulo: 'Cruce peatonal automatizado', nivel: 'Intermedio', 
+    opciones: ['Peatón presiona el botón de cruce', 'Luz roja para autos', ' Luz verde para peatones', 'Después de unos segundos, vuelve a luz verde para auto'], 
+    solucion: ['Peatón presiona el botón de cruce', 'Luz roja para autos', ' Luz verde para peatones', 'Después de unos segundos, vuelve a luz verde para auto'], 
+    plantilla: [1, 0, 0, 0] 
+  },
+  
+  { 
+    id: 'a1', titulo: 'Lavadora automática', nivel: 'Avanzado', 
+    opciones: ['Llenar el tanque con agua', 'Activar el ciclo de lavado', 'Enjuagar la ropa', 'Centrifugar y apagar el sistema'], 
+    solucion: ['Llenar el tanque con agua', 'Activar el ciclo de lavado', 'Enjuagar la ropa', 'Centrifugar y apagar el sistema'], 
+    plantilla: [0, 0, 0, 0]
+  },
+  { 
+    id: 'a2', titulo: 'Funcionamiento de una tostadora automática para preparar el desayuno', nivel: 'Avanzado', 
+    opciones: ['Insertar el pan en las ranuras', 'Activar el nivel de tostado', 'Las resistencias calientan el pan', 'Saltar el pan automáticamente al finalizar'], 
+    solucion: ['Insertar el pan en las ranuras', 'Activar el nivel de tostado', 'Las resistencias calientan el pan', 'Saltar el pan automáticamente al finalizar'], 
+    plantilla: [0, 0, 0, 0]
+  },
+  { 
+    id: 'a3', titulo: 'Cafetera programable', nivel: 'Avanzado', 
+    opciones: ['Programar hora de inicio', 'Calentar el agua', 'Pasar el agua caliente por el café molido', 'Servir el café en la jarra'], 
+    solucion: ['Programar hora de inicio', 'Calentar el agua', 'Pasar el agua caliente por el café molido', 'Servir el café en la jarra'], 
+    plantilla: [0, 0, 0, 0]
+  },
+  { 
+    id: 'a4', titulo: 'Refrigerador con control automático', nivel: 'Avanzado', 
+    opciones: ['Medir temperatura interna', ' Comparar con temperatura configurada', 'Activar compresor si hace calor', 'Apagar compresor al alcanzar temperatura deseada'],
+    solucion: ['Medir temperatura interna', ' Comparar con temperatura configurada', 'Activar compresor si hace calor', 'Apagar compresor al alcanzar temperatura deseada'], 
+    plantilla: [0, 0, 0, 0]
+  },
+  { 
+    id: 'a5', titulo: 'Lavavajillas automático', nivel: 'Avanzado', 
+    opciones: ['Cargar los platos y cubiertos', 'Seleccionar el programa de lavado', 'Lavar, enjuagar y secar los utensilios', 'Apagar al finalizar el ciclo'],
+    solucion: ['Cargar los platos y cubiertos', 'Seleccionar el programa de lavado', 'Lavar, enjuagar y secar los utensilios', 'Apagar al finalizar el ciclo'],
+    plantilla: [0, 0, 0, 0]
+  },
+  { 
+    id: 'a6', titulo: 'Horno eléctrico con temporizador', nivel: 'Avanzado', 
+    opciones: ['Programar temperatura y tiempo', 'Encender las resistencias de calor', 'Cocinar el alimento', 'Apagar el horno al terminar el tiempo programado'],
+    solucion: ['Programar temperatura y tiempo', 'Encender las resistencias de calor', 'Cocinar el alimento', 'Apagar el horno al terminar el tiempo programado'],
+    plantilla: [0, 0, 0, 0]
+  },
+  { 
+    id: 'a7', titulo: 'Aire acondicionado inteligente', nivel: 'Avanzado', 
+    opciones: ['Leer temperatura del ambiente', 'Comparar con temperatura deseada', 'Enfriar o calentar el aire', 'Mantener temperatura constante'],
+    solucion: ['Leer temperatura del ambiente', 'Comparar con temperatura deseada', 'Enfriar o calentar el aire', 'Mantener temperatura constante'],
+    plantilla: [1, 0, 0, 0]
+  },
 ];
 
 const CONFIG_NIVELES = {

@@ -92,10 +92,10 @@ const summaryStyles = `
     @media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; } }
 `;
 
+const getCurrentDateString = () => new Date().toLocaleDateString('en-CA');
+
 // --- GENERADOR DE HTML PARA DIAGRAMAS ---
 const generateFlowchartHTML = (config, gameDetails, selectedPlatforms) => {
-    const formattedDate = gameDetails.date ? new Date(gameDetails.date).toLocaleDateString('es-ES') : 'Fecha no especificada';
-    const platformsString = selectedPlatforms?.length > 0 ? selectedPlatforms.map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(', ') : 'Web';
 
     return `<!DOCTYPE html>
 <html lang="es">
@@ -486,7 +486,7 @@ const Summary = ({ config, onBack }) => {
           gameName: "Juego de Diagramas",
           description: "Ordena los procesos lógicos correctamente.",
           version: "1.0.0",
-          date: new Date().toISOString()
+          date: getCurrentDateString(),
         },
         selectedPlatforms: ['android']
     };
@@ -623,7 +623,7 @@ const Summary = ({ config, onBack }) => {
                 nombreApp: gameDetails?.gameName || 'Diagramas de Flujo',
                 version: gameDetails?.version || '1.0.0',
                 descripcion: gameDetails?.description || '',
-                fecha: gameDetails?.date || new Date().toISOString(),
+                fecha: getCurrentDateString(),
                 plataformas: Array.isArray(selectedPlatforms)
                     ? selectedPlatforms
                     : ['android'],
@@ -685,7 +685,7 @@ const Summary = ({ config, onBack }) => {
                     </div>
                     <div className="info-card" style={{ alignItems: 'center', textAlign: 'center' }}>
                       <div className="info-card-header" style={{ justifyContent: 'center', width: '100%' }}><Calendar size={16} /> Fecha de Creación</div>
-                        <div className="info-card-value">{formatDate(gameDetails.date)}</div>
+                        <div className="info-card-value">{formatDate(getCurrentDateString())}</div>
                         </div>
 
                         <div className="info-card" style={{ alignItems: 'center', textAlign: 'center' }}>
