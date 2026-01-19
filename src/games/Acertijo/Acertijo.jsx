@@ -12,6 +12,8 @@ import {
     ArrowLeft, Tag, FileText, Calendar, Monitor, Shapes, Clock, List, Layers, Puzzle, Type, Smartphone
 } from 'lucide-react';
 
+const getCurrentDateString = () => new Date().toLocaleDateString('en-CA');
+
 // --- ESTILOS GLOBALES DEL JUEGO (ACERTIJO) ---
 const GlobalStyles = () => (
     <style>{`
@@ -588,7 +590,7 @@ const Summary = ({ config, onBack }) => {
           gameName: "Juego de Acertijos",
           description: "Desafío mental con preguntas de lógica, ciencia y geometría.",
           version: "1.0.0",
-          date: new Date().toISOString()
+          date: getCurrentDateString(),
         },
         selectedPlatforms: ['web', 'mobile']
     };
@@ -740,7 +742,7 @@ const Summary = ({ config, onBack }) => {
                 nombreApp: gameDetails?.gameName || 'Juego de Acertijos',
                 version: gameDetails?.version || '1.0.0',
                 descripcion: gameDetails?.description || '',
-                fecha: gameDetails?.date || new Date().toISOString(),
+                fecha: getCurrentDateString(),
                 plataformas: Array.isArray(selectedPlatforms)
                     ? selectedPlatforms
                     : ['android'],
@@ -835,7 +837,7 @@ const Summary = ({ config, onBack }) => {
 
                     <div className="info-card" style={{ alignItems: 'center', textAlign: 'center' }}>
                         <div className="info-card-header" style={{ justifyContent: 'center', width: '100%' }}><Calendar size={16} /> Fecha de Creación</div>
-                        <div className="info-card-value">{formatDate(gameDetails.date)}</div>
+                        <div className="info-card-value">{formatDate(getCurrentDateString())}</div>
                     </div>
 
                     <div className="info-card" style={{ alignItems: 'center', textAlign: 'center' }}>
