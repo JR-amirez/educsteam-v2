@@ -9,7 +9,6 @@
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^7.0.0",
     "@fortawesome/react-fontawesome": "^0.2.3",
-    "@lottiefiles/dotlottie-web": "^0.52.2",
     "@lottiefiles/react-lottie-player": "^3.6.0",
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
