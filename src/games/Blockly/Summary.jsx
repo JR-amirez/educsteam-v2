@@ -2683,7 +2683,7 @@ const Summary = ({ config = {}, onBack }) => {
                     </button>
 
                     {/* Botón Android */}
-                    <button
+                    {/*<button
                         onClick={generarAndroidZipConConfig}
                         disabled={isGeneratingAndroid || !jsZipReady}
                         style={{
@@ -2708,12 +2708,11 @@ const Summary = ({ config = {}, onBack }) => {
                         ) : (
                             <><Smartphone size={18} /> Android (APK)</>
                         )}
-                    </button>
+                    </button>*/}
                 </div>
 
                 <p style={{ fontSize: '0.85rem', color: '#64748b', maxWidth: '600px', margin: '0.5rem 0 0 0', textAlign: 'center' }}>
                     <strong>Web:</strong> Archivo HTML listo para abrir en navegador.
-                    {' '}<strong>Android:</strong> Proyecto React Native listo para compilar en Android Studio.
                 </p>
             </div>
 
