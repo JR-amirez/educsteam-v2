@@ -76,7 +76,28 @@ const Ra = () => {
           <button
             className="no-rounded-button"
             disabled={selectedBiblioteca.length === 0}
-            onClick={() => navigate('/platform', { state: { selectedBiblioteca } })}
+            onClick={() => navigate('/platform', { state: { selectedGame: {
+    "id": "Blockly",
+    "name": "Programación por Bloques",
+    "tecno": "Tecnología RA",
+    "icon": "/images/juegos/programacion_boques.png",
+    "icon2": "/images/juegos/VRAR.json",
+    "path": "/apps/Blockly/index.html",
+    "skills": [
+        "Programación y codificación",
+        "Manejo de herramientas tecnológicas",
+        "Innovación y creatividad tecnológica",
+        "Adaptabilidad a nuevas tecnologías"
+    ],
+    "areas": [
+        "technology"
+    ],
+    "areaNames": [
+        "Tecnología"
+    ],
+    "primaryArea": "Tecnología",
+    "primaryAreaId": "technology"
+} } })}
           >
             Siguiente <GrLinkNext />
 

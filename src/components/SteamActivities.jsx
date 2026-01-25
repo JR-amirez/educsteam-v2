@@ -135,6 +135,7 @@ const SteamActivities = () => {
 
   const handleRANo = () => {
     setShowRAModal(false);
+    console.log(selectedGame);
     navigate('/platform', {
       state: {
         ...state,

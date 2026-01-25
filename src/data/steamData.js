@@ -80,6 +80,18 @@ export const tipoContenido = {
       "Resolución de problemas complejos",
       'Habilidades técnicas y manipulación de herramientas'
     ]
+  },
+  video: {
+    name: "Video",
+    icon: "/images/areas/video.json",
+    description: "Presenta contenido dinámico y experiencias audiovisuales.",
+    skills: [
+      "Creatividad e imaginación",
+      "Expresión visual, musical y/o escénica",
+      "Comunicación y narrativa",
+      "Innovación y creatividad tecnológica",
+      "Adaptabilidad a nuevas tecnologías"
+    ]
   }
 };
 
